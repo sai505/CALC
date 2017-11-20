@@ -21,9 +21,10 @@ int main(){
 			new Div(new Int(4), new Int(2)),
 			new Add(new Int(3), new Int(2))
 		)
-		
-		std::cout << e << "==" <<e->
-	
-	
-	
+				
+		std::cout << e << " == " << e->evaluate() << '\n';
+
+		Expr* e2 = e->reduce();
+		delete e;
+		delete e2;	
 }
