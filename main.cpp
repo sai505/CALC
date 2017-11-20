@@ -22,6 +22,7 @@ int main(){
 			new Add(new Int(3), new Int(2))
 		)
 		
+		std::cout << e << "==" <<e->
 	
 	
 	
