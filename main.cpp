@@ -6,6 +6,7 @@
 //The first implementation should use virtual functions and the second should use the visitor pattern.
 
 #include "calc.hpp"
+#include "visito.hpp"
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& os, const Expr* e)
@@ -27,4 +28,11 @@ int main(){
 		Expr* e2 = e->reduce();
 		delete e;
 		delete e2;	
+		
+		EvalVisitor v;
+		e->accept(v);
+		std::cout << v.ret << '\n';
+
+		std::cout << eval(e) << '\n';
+
 }
