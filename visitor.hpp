@@ -10,7 +10,7 @@ struct Int;
 struct Add;
 struct Sub;
 struct Mul;
-struct Div;
+//struct Div;
 
 // A visitor or abstract dispatch table for the
 // Expr hierarchy below.

@@ -28,13 +28,13 @@ struct Expr{
 	virtual Expr* reduce() const =0;
 	
 	//return true if not reducable
-	virtual bool is_value const{
+	virtual bool is_value() const{
 		return false;
 	}
 	
 	virtual void compile (std::ostream& os) const =0;
 	
-	//return treu is this equal to that
+	//return true is this equal to that
 	virtual bool equal(const Expr* that) const =0;
 	virtual bool equal(const Int* that) const {return false;}
 	virtual bool equal(const Add* that) const {return false;}
@@ -49,9 +49,7 @@ bool operator==(const Expr* e1, const Expr* e2);
 /// Represents expressions of the form 0, 1, 2, ..., n.
 struct Int : Expr
 {
-  Int(int n)
-    : val(n)
-  { }
+  Int(int n): val(n){ }
 
   // Returns a copy of this object.
   //
