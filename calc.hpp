@@ -41,17 +41,17 @@ struct Expr {
 	virtual bool equal(const Sub* that) const { return false; }
 	virtual bool equal(const Mul* that) const { return false; }
 	virtual bool equal(const Div* that) const { return false; }
-	virtual bool operator==(const Expr* e2);
+	//virtual bool operator==(const Expr* e2);
 
 
 };
-
+/*
 bool Expr::operator==(const Expr* e2) {
 	if (this == e2)
 		return true;
 	return false;
 
-}
+}*/
 
 
 /// Represents expressions of the form 0, 1, 2, ..., n.
@@ -186,8 +186,8 @@ struct Add : Binary
 		return that->equal(this);
 	}
 	bool equal(const Add* that) const override {
-		return *e1 == *that->e1 && *e2 == *that->e2;
-
+		//return *e1 == *that->e1 && *e2 == *that->e2;
+		return e1->equal(that->e1) && e2->equal(that->e2);
 		// Or equivalently...
 		// return e1->equal(that->e1) && e2->equal(that->e2);
 	}
@@ -235,7 +235,8 @@ struct Sub : Binary
 	}
 
 	bool equal(const Sub* that) const override {
-		return *e1 == *that->e1 && *e2 == *that->e2;
+		//return *e1 == *that->e1 && *e2 == *that->e2;
+		return e1->equal(that->e1) && e2->equal(that->e2);
 	}
 };
 
@@ -281,7 +282,8 @@ struct Mul : Binary
 	}
 
 	bool equal(const Mul* that) const override {
-		return *e1 == *that->e1 && *e2 == *that->e2;
+		//return *e1 == *that->e1 && *e2 == *that->e2;
+		return e1->equal(that->e1) && e2->equal(that->e2);
 	}
 };
 
@@ -332,7 +334,8 @@ struct Div : Binary
 	}
 
 	bool equal(const Div* that) const override {
-		return *e1 == *that->e1 && *e2 == *that->e2;
+		//return *e1 == *that->e1 && *e2 == *that->e2;
+		return e1->equal(that->e1) && e2->equal(that->e2);
 	}
 };
 

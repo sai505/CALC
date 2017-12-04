@@ -14,14 +14,22 @@ std::ostream& operator<<(std::ostream& os, const Expr* e)
 	return os;
 }
 
-int main(){
-	
-		//(5-2) * (4/2) * (3+2)
-		Expr* e = new Sub(new Int(5), new Int(2));
-		//Expr* e = new Mul(new Sub(new Int(5), new Int(2)));
-				
-		std::cout << e << " == " << e->evaluate() << '\n';
+int main() {
 
-	
+	//(5-2) * (4/2) * (3+2)
+	Expr* s = new Sub(new Int(5), new Int(2));
+	Expr* d = new Div(new Int(4), new Int(2));
+	Expr* e = new Mul(s,d);
+
+	std::cout << e << " == " << e->evaluate() << '\n';
+
+	 EvalVisitor v;
+	  e->accept(v);
+	  std::cout << v.ret << '\n';
+
+	  std::cout << eval(e) << '\n';
+
+	  delete e;
+
 
 }

@@ -5,7 +5,7 @@
 
 // Forward declarations declares what something is prior
 // to its definition.
-struct Expr;
+struct Expr_v;
 struct Int;
 struct Add;
 struct Sub;
@@ -51,15 +51,15 @@ int eval(Expr* e);
 //       -e1                 -- negation
 //
 // Expr is the base class of all expressions.
-struct Expr
+struct Expr_v
 {
-  virtual ~Expr() = default;
+  virtual ~Expr_v() = default;
 
   virtual void accept(Visitor& v) = 0;
 };
 
 /// Represents expressions of the form 0, 1, 2, ..., n.
-struct Int : Expr
+struct Int : Expr_v
 {
   Int(int n) : val(n) { }
 
@@ -70,17 +70,17 @@ struct Int : Expr
 
 /// Represents all expressions of the form e1 @ e2 where @
 /// is one of the operations +, -, *, /.
-struct Binary : Expr
+struct Binary : Expr_v
 {
-  Binary(Expr *e1, Expr* e2) : e1(e1), e2(e2) { }
+  Binary(Expr_v *e1, Expr_v* e2) : e1(e1), e2(e2) { }
 
   ~Binary() override {
     delete e1;
     delete e2;
   }
 
-  Expr* e1;
-  Expr* e2;
+  Expr_v* e1;
+  Expr_v* e2;
 };
 
 /// Represents expressions of the form e1 + e2.

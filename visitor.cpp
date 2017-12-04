@@ -63,7 +63,7 @@ EvalVisitor::visit(Div* e) {
 }
 
 
-int eval(Expr* e) {
+int eval(Expr_v* e) {
   struct V : Visitor {
     int ret;
     void visit(Int* n) override { ret = n->val; }
